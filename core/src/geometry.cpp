@@ -79,9 +79,16 @@ double VertexPositionGeometry::totalArea() const {
  * Returns: The cotan of the angle opposite the given halfedge.
  */
 double VertexPositionGeometry::cotan(Halfedge he) const {
+    // opposite vector
+    Vector3 Opp = vertexPositions[he.next().tipVertex()];
+     
+    Vector3 u = vertexPositions[he.tipVertex()]-Opp;
+    Vector3 v = vertexPositions[he.tailVertex()]-Opp;
+    
+    double dot = u.x*v.x + u.y*v.y + u.z+v.z;
+    double cross = norm(Vector3{u.y*v.z-u.z*v.y, u.x*v.z-u.z*v.x, u.x*v.y-u.y*v.x});
 
-    // TODO
-    return 0; // placeholder
+    return dot/cross; // placeholder
 }
 
 /*
@@ -126,7 +133,7 @@ double VertexPositionGeometry::dihedralAngle(Halfedge he) const {
  *
  * Input: The vertex on which the normal is to be computed.
  * Returns: The "equally weighted" normal vector.
- */
+ *
 Vector3 VertexPositionGeometry::vertexNormalEquallyWeighted(Vertex v) const {
 
  * Computes the normal at a vertex using the "equally weighted" method.
