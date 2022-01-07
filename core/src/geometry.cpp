@@ -98,9 +98,14 @@ double VertexPositionGeometry::cotan(Halfedge he) const {
  * Returns: The barycentric dual area of the given vertex.
  */
 double VertexPositionGeometry::barycentricDualArea(Vertex v) const {
-
-    // TODO
-    return 0; // placeholder
+    
+    double area = 0;
+    for(Face f : v.adjacentFaces()){
+        area += faceArea(f);
+    }
+    
+    // divide by 3 to balance it equally among each vertex per triangle
+    return area/3; // placeholder
 }
 
 /*

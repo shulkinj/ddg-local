@@ -155,6 +155,16 @@ class DiscreteExteriorCalculusTest : public ::testing::Test {
 
     virtual ~DiscreteExteriorCalculusTest() {}
 };
+/*
+TEST_F(DiscreteExteriorCalculusTest, HalfEdgeCotan) {
+
+    std::cerr << "Testing Cotan(HalfEdge he)..." << std::endl;
+    halfEdge he = this->halfEdges
+    double result = H0 * Vector<double>::Ones(mesh->nVertices());
+
+    EXPECT_TRUE((result - H0_soln).norm() < 1e-6);
+}
+*/
 
 TEST_F(DiscreteExteriorCalculusTest, buildHodgeStar0Form) {
 
