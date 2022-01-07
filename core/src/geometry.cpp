@@ -129,6 +129,13 @@ double VertexPositionGeometry::dihedralAngle(Halfedge he) const {
  */
 Vector3 VertexPositionGeometry::vertexNormalEquallyWeighted(Vertex v) const {
 
+ * Computes the normal at a vertex using the "equally weighted" method.
+ *
+ * Input: The vertex on which the normal is to be computed.
+ * Returns: The "equally weighted" normal vector.
+ */
+Vector3 VertexPositionGeometry::vertexNormalEquallyWeighted(Vertex v) const {
+
     // TODO
     return {0, 0, 0}; // placeholder
 }
@@ -254,13 +261,6 @@ std::pair<double, double> VertexPositionGeometry::principalCurvatures(Vertex v) 
 }
 
 
-/*
- * Builds the sparse POSITIVE DEFINITE Laplace matrix. Do this by building the negative semidefinite Laplace matrix,
- * multiplying by -1, and shifting the diagonal elements by a small constant (e.g. 1e-8).
- *
- * Input:
- * Returns: Sparse positive definite Laplace matrix for the mesh.
- */
 SparseMatrix<double> VertexPositionGeometry::laplaceMatrix() const {
 
     // TODO
